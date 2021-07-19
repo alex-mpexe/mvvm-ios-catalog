@@ -13,10 +13,10 @@ code_files:
 
 # Interface
 - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
-- {name: ViewModel/ViewModel.swift, path: Code/Router/ViewModel/ViewModel.swift.liquid}
+- {name: ViewModel/ViewModel.swift, path: Code/ViewModel/viewModel.swift.liquid}
 
 # Controllers
-- {name: Controller/Controller.swift, path: Code/Controller/ViewControllerTable.swift.liquid}
+- {name: Controller/Controller.swift, path: Code/Controller/viewControllerTable.swift.liquid}
 
 # Storyboard
 - {name: .storyboard, path: Code/viewcontroller.storyboard.liquid}
