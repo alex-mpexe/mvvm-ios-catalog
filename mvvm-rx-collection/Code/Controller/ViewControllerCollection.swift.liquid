@@ -1,0 +1,78 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+import RxCocoa
+import RxDataSources
+import RxSwift
+
+class {{ module_info.name }}ViewController: CommonViewController {
+
+    // MARK: - IBOutlet
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            // register cells
+        }
+    }
+
+    // MARK: - Public Properties
+    typealias Item = {{ module_info.name }}ViewModel.ItemModel
+    typealias Section = {{ module_info.name }}ViewModel.SectionModel
+
+    // MARK: - Private Properties
+    private let viewModel = {{ module_info.name }}ViewModel()
+    private let bag = DisposeBag()
+    private var dataSource: RxCollectionViewSectionedAnimatedDataSource<Section>!
+
+    // MARK: - UIViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepare()
+        subscribe()
+    }
+
+    // MARK: - Public methods
+
+    // MARK: - IBAction
+
+    // MARK: - Private Methods
+    private func prepare() {
+        collectionView.rx
+            .setDelegate(self)
+            .disposed(by: bag)
+        dataSource = generateDataSource()
+    }
+    
+    private func subscribe() {
+        viewModel.sections
+            .asObservable()
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+    }
+
+    private func generateDataSource() -> RxCollectionViewSectionedAnimatedDataSource<Section> {
+        return RxCollectionViewSectionedAnimatedDataSource<Section>(
+            animationConfiguration: AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade),
+            configureCell: { [unowned self] dataSource, collectionView, indexPath, _ in
+                let item: Item = self.dataSource[indexPath]
+                switch item {
+                    // configure cells
+                } 
+            }    
+        })
+    }
+}
+
+extension {{ module_info.name }}ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = dataSource[indexPath]
+        switch item {
+            // set rows height
+        }
+    }
+}
