@@ -1,0 +1,26 @@
+# Template information section
+name: "mvvm-rx-table"
+summary: "mvvm rx table template"
+author: "Igor Tyukavkin"
+version: "1.0.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# Views
+- {name: Views/}
+
+# Interface
+- {name: Router/Router.swift, path: Code/Interface/router.swift.liquid}
+- {name: ViewModel/ViewModel.swift, path: Code/Interface/ViewModel.swift.liquid}
+
+# Controllers
+- {name: Controller/Controller.swift, path: Code/Interface/ViewControllerTable.swift.liquid}
+
+# Storyboard
+- {name: .storyboard, path: Code/viewcontroller.storyboard.liquid}
+
+#- {name: Configurator/Configurator.swift, path: Code/Configurator/configurator.swift.liquid}
+#- {name: Configurator/Initializer.swift, path: Code/Configurator/initializer.swift.liquid}
+
